@@ -98,7 +98,7 @@ FROM products
 WHERE category = 'electronics' AND price < 100.00
 ORDER BY COSINE_SIMILARITY(embedding, :query_vector) DESC
 LIMIT 10;
-
+```
 
 The query engine would likely execute this as follows:
 Metadata Filtering: Use the Lucene/Arrow indexes to quickly identify all products where category = 'electronics' AND price < 100.00. This drastically reduces the candidate set (e.g., from millions to thousands).
