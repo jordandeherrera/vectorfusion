@@ -1,4 +1,4 @@
-# Open Converged Index Project (Placeholder Name)
+# Vector Fusion
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://img.shields.io/badge/Build-Pending-lightgrey)](...) [![Documentation Status](https://img.shields.io/badge/Docs-WIP-orange)](...) An open-source initiative to build a high-performance data platform featuring tightly integrated vector search and metadata/keyword filtering, inspired by architectures like Rockset's Converged Index™.
