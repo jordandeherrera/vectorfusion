@@ -102,38 +102,44 @@ LIMIT 10;
 
 The query engine would likely execute this as follows:
 Metadata Filtering: Use the Lucene/Arrow indexes to quickly identify all products where category = 'electronics' AND price < 100.00. This drastically reduces the candidate set (e.g., from millions to thousands).
+
 Vector Search: Perform an ANN (HNSW) search only on the filtered subset of product embeddings against the :query_vector.
+
 Ranking & Retrieval: Retrieve the top 10 results based on cosine similarity.
 This filter-then-search approach is key to achieving high performance by minimizing costly vector operations.
-Performance Goals
-Low Latency: Aim for P99 latencies in the tens of milliseconds for typical hybrid queries.
-High Throughput: Support high concurrent query loads.
-Efficient Resource Usage: Optimize memory (via techniques like Product Quantization) and CPU (via SIMD, parallelism) usage.
-Scalability: Linear scaling of ingestion and query performance with added nodes.
-Development Roadmap
+
+## Performance Goals
+* Low Latency: Aim for P99 latencies in the tens of milliseconds for typical hybrid queries.
+* High Throughput: Support high concurrent query loads.
+* Efficient Resource Usage: Optimize memory (via techniques like Product Quantization) and CPU (via SIMD, parallelism) usage.
+* Scalability: Linear scaling of ingestion and query performance with added nodes.
+
+## Development Roadmap
 Development is planned in iterative phases:
-Phase 1: Build an in-memory prototype demonstrating core vector search integrated with basic metadata pre-filtering. Establish baseline performance benchmarks.
-Phase 2: Implement disk-based persistence (RocksDB integration) and develop the real-time ingestion pipeline. Refine the query optimizer.
-Phase 3: Focus on horizontal scalability, advanced query optimization (e.g., metadata-aware HNSW), fault tolerance, and API hardening. Build community tooling and documentation.
-Getting Started (Future)
+
+* Phase 1: Build an in-memory prototype demonstrating core vector search integrated with basic metadata pre-filtering. Establish baseline performance benchmarks.
+* Phase 2: Implement disk-based persistence (RocksDB integration) and develop the real-time ingestion pipeline. Refine the query optimizer.
+* Phase 3: Focus on horizontal scalability, advanced query optimization (e.g., metadata-aware HNSW), fault tolerance, and API hardening. Build community tooling and documentation.
+
+## Getting Started (Future)
 (This section is a placeholder until code is available)
 Once the initial prototype is available:
 
 Bash
 
 
-# Clone the repository (link TBD)
+### Clone the repository (link TBD)
 git clone [https://github.com/your-org/open-converged-index.git](https://github.com/your-org/open-converged-index.git)
 cd open-converged-index
 
-# Build instructions (TBD)
+### Build instructions (TBD)
 ./build.sh # Example
 
-# Run instructions (TBD)
+### Run instructions (TBD)
 ./server # Example
 
 
-Contributing
+## Contributing
 We welcome contributions from the community! If you're interested in helping build the next generation of open-source hybrid search, please consider:
 Reviewing the architecture and providing feedback.
 Contributing code, particularly in areas like:
@@ -144,7 +150,9 @@ Building robust ingestion and storage layers.
 Creating benchmarks and documentation.
 Opening issues for bugs or feature requests.
 Please adhere to the project's code of conduct and contribution guidelines (to be created). We aim to build an open, collaborative community around clear documentation and transparent benchmarks.
-License
+
+
+## License
 This project is licensed under the Apache License 2.0. See the https://www.google.com/search?q=LICENSE file for details.
 
 
