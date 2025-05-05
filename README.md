@@ -101,11 +101,11 @@ LIMIT 10;
 ```
 
 The query engine would likely execute this as follows:
-Metadata Filtering: Use the Lucene/Arrow indexes to quickly identify all products where category = 'electronics' AND price < 100.00. This drastically reduces the candidate set (e.g., from millions to thousands).
 
-Vector Search: Perform an ANN (HNSW) search only on the filtered subset of product embeddings against the :query_vector.
+1. Metadata Filtering: Use the Lucene/Arrow indexes to quickly identify all products where category = 'electronics' AND price < 100.00. This drastically reduces the candidate set (e.g., from millions to thousands).
+2. Vector Search: Perform an ANN (HNSW) search only on the filtered subset of product embeddings against the :query_vector.
+3. Ranking & Retrieval: Retrieve the top 10 results based on cosine similarity.
 
-Ranking & Retrieval: Retrieve the top 10 results based on cosine similarity.
 This filter-then-search approach is key to achieving high performance by minimizing costly vector operations.
 
 ## Performance Goals
@@ -125,37 +125,40 @@ Development is planned in iterative phases:
 (This section is a placeholder until code is available)
 Once the initial prototype is available:
 
-Bash
-
-
 ### Clone the repository (link TBD)
+```
 git clone [https://github.com/your-org/open-converged-index.git](https://github.com/your-org/open-converged-index.git)
 cd open-converged-index
+```
 
 ### Build instructions (TBD)
+```
 ./build.sh # Example
+```
 
 ### Run instructions (TBD)
+```
 ./server # Example
-
+```
 
 ## Contributing
 We welcome contributions from the community! If you're interested in helping build the next generation of open-source hybrid search, please consider:
+
 Reviewing the architecture and providing feedback.
+
 Contributing code, particularly in areas like:
-Integrating Faiss/Lucene/Arrow/RocksDB.
-Developing the query planner and optimizer.
-Implementing metadata-aware ANN algorithms.
-Building robust ingestion and storage layers.
-Creating benchmarks and documentation.
-Opening issues for bugs or feature requests.
+* Integrating Faiss/Lucene/Arrow/RocksDB.
+* Developing the query planner and optimizer.
+* Implementing metadata-aware ANN algorithms.
+* Building robust ingestion and storage layers.
+* Creating benchmarks and documentation.
+* Opening issues for bugs or feature requests.
+
 Please adhere to the project's code of conduct and contribution guidelines (to be created). We aim to build an open, collaborative community around clear documentation and transparent benchmarks.
 
 
 ## License
-This project is licensed under the Apache License 2.0. See the https://www.google.com/search?q=LICENSE file for details.
-
-
+This project is licensed under the Apache License 2.0. See the [LICENSE](https://github.com/jordandeherrera/vectorfusion/blob/main/LICENSE) file for details.
 
 **Key changes and considerations in this README:**
 
